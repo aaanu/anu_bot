@@ -2,8 +2,8 @@ require 'twitter_ebooks'
 
 class MyBot < Ebooks::Bot
   def configure
-    self.consumer_key = 'cRiAA629PuYBSBsZo33jIAe3h' # Your app consumer key
-    self.consumer_secret = 'L4AtPBKp253Gid10DmNWgbvc7THa6VthdvhXoWW9tRurKCuD1P' # Your app consumer secret
+    self.consumer_key = ENV["CONSUMER_KEY"] # Your app consumer key
+    self.consumer_secret = ENV["CONSUMER_SECRET"] # Your app consumer secret
 
     # Users to block instead of interacting with
     self.blacklist = ['tnietzschequote']
@@ -13,8 +13,8 @@ class MyBot < Ebooks::Bot
   end
 
   def on_startup
-    scheduler.every '3h' do
-      # Tweet something every 3 hours
+    scheduler.every '8h' do
+      # Tweet something every 8 hours
       model = Ebooks::Model.load("model/aaaaaanu.model")
       tweet(model.make_statement(140))
     end
@@ -52,6 +52,6 @@ end
 
 # Make a MyBot and attach it to an account
 MyBot.new("AnuBot") do |bot|
-  bot.access_token = "871204302299295744-jjHiY2nn4Qq7q4ZcH0Vl5BSCf2hjIw9" # Token connecting the app to this account
-  bot.access_token_secret = "5GKSrdcQnd2SaVMi701MurHFTzGtgZl9PmzaY0gMx2b3O" # Secret connecting the app to this account
+  bot.access_token = ENV["ACCESS_TOKEN"] # Token connecting the app to this account
+  bot.access_token_secret = ENV["ACCESS_TOKEN_SECRET"] # Secret connecting the app to this account
 end
