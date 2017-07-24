@@ -2,11 +2,8 @@ require 'twitter_ebooks'
 
 class MyBot < Ebooks::Bot
   def configure
-    self.consumer_key = ENV["CONSUMER_KEY"] # Your app consumer key
-    self.consumer_secret = ENV["CONSUMER_SECRET"] # Your app consumer secret
-
-    # Users to block instead of interacting with
-    self.blacklist = ['tnietzschequote']
+    self.consumer_key = ENV["CONSUMER_KEY"] # App consumer key
+    self.consumer_secret = ENV["CONSUMER_SECRET"] # App consumer secret
 
     # Range in seconds to randomize delay when bot.delay is called
     self.delay_range = 1..6
